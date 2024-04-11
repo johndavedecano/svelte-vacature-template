@@ -1,30 +1,40 @@
 <script lang="ts">
   import MdAccountBalance from "svelte-icons/md/MdAccountBalance.svelte";
   import MdPersonPinCircle from "svelte-icons/md/MdPersonPinCircle.svelte";
+  import type { Vacature } from "$lib/types";
+
+  export let vacature: Vacature = {
+    title: "",
+    type: "",
+    location: "",
+    href: "",
+  };
 </script>
 
 <div class="vacature-item">
   <div class="vacature-content">
     <div class="vacature-title">
-      <a href="/">Senior Software Engineer</a>
+      <a href={vacature.href}>
+        {vacature.title}
+      </a>
     </div>
     <div class="vacature-icons">
       <div class="vacature-type">
         <div class="vacature-icon">
           <MdAccountBalance />
         </div>
-        On-site
+        {vacature.type}
       </div>
       <div class="vacature-type">
         <div class="vacature-icon">
           <MdPersonPinCircle />
         </div>
-        Breda, North Brabant
+        {vacature.location}
       </div>
     </div>
   </div>
   <div class="vacature-action">
-    <a href="/">Solliciteren</a>
+    <a href={vacature.href}>Solliciteren</a>
   </div>
 </div>
 
