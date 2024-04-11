@@ -1,6 +1,8 @@
-# create-svelte
+# Svelte Vacature Job Template
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/main/packages/create-svelte).
+Gratis landingspagina met vacatures voor uw wervingsbureau. 100% helemaal gratis. Gebouwd met SvelteKit.
+
+Demo: https://svelte-vacature-template.vercel.app/
 
 ## Creating a project
 
