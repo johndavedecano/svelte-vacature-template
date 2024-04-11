@@ -6,10 +6,10 @@
       <div class="header-spacer"></div>
       <ul class="header-menu">
         <li>
-          <a href="/vacatures">Vacatures</a>
+          <a href="/#vacatures">Vacatures</a>
         </li>
         <li>
-          <a href="/contact">Contact</a>
+          <a href="/#contact">Contact</a>
         </li>
       </ul>
     </div>

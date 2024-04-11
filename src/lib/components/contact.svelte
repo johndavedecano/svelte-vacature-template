@@ -1,4 +1,4 @@
-<div class="contact-wrapper">
+<div class="contact-wrapper" id="contact">
   <div class="contact">
     <div class="contact-heading">Neem contact met ons op</div>
     <div class="contact-body">

@@ -11,7 +11,7 @@
   };
 </script>
 
-<div class="vacature-item">
+<div class="vacature-item" id="vacatures">
   <div class="vacature-content">
     <div class="vacature-title">
       <a href={vacature.href}>
