@@ -4,3 +4,14 @@ export type Vacature = {
   location: string;
   href: string;
 };
+
+export type User = {
+  displayName: string;
+  email: string;
+  avatar: string;
+};
+
+export type UserLoginField = {
+  email: string;
+  password: string;
+};

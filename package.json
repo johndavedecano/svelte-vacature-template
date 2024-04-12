@@ -24,6 +24,7 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"joi": "^17.12.3",
 		"svelte-icons": "^2.1.0"
 	}
 }
