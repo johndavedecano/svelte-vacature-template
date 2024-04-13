@@ -1,6 +1,6 @@
 import { json } from "@sveltejs/kit";
 import type { RequestHandler } from "./$types";
-import { auth } from "$lib/server/firebase.js";
+import { db } from "$lib/server/firebase.js";
 import Joi from "joi";
 
 export const POST: RequestHandler = async ({ request, cookies }) => {
@@ -8,7 +8,12 @@ export const POST: RequestHandler = async ({ request, cookies }) => {
     const body = await request.json();
 
     const Validator = Joi.object({
-      idToken: Joi.string().required(),
+      title: Joi.string().required(),
+      type: Joi.string().required(),
+      location: Joi.string().required(),
+      description: Joi.string().required(),
+      href: Joi.string().uri().required(),
+      company: Joi.string().required(),
     });
 
     const result = Validator.validate(body);
@@ -19,28 +24,11 @@ export const POST: RequestHandler = async ({ request, cookies }) => {
       });
     }
 
-    const user = await auth.verifyIdToken(result.value.idToken);
+    const value = result.value;
 
-    cookies.set("uid", user.uid, { path: "/" });
+    await db.collection("vacatures").add(value);
 
-    return json(result.value);
-  } catch (error) {
-    return json(
-      {
-        success: false,
-        message: (error as Error).message,
-      },
-      {
-        status: 500,
-      }
-    );
-  }
-};
-
-export const DELETE: RequestHandler = async ({ cookies }) => {
-  try {
-    cookies.delete("uid", { path: "/" });
-    return json({ success: true });
+    return json({ success: true, data: value });
   } catch (error) {
     return json(
       {

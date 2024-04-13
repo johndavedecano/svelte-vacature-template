@@ -8,7 +8,9 @@ body {
   font-family: "Roboto", sans-serif;
 }
 
-input {
+input,
+textarea,
+select {
   @apply border-2 border-slate-100 px-4 py-3 rounded-lg w-full;
 }
 
@@ -21,9 +23,37 @@ input {
 }
 
 .btn {
-  @apply px-4 py-3 text-center font-semibold inline-flex w-full border-2 rounded-lg justify-center;
+  @apply px-4 py-3 text-center font-semibold inline-flex border-2 rounded-lg justify-center;
 }
 
 .btn-primary {
   @apply border-blue-900 bg-blue-900 text-white;
+}
+
+.btn-primary-outline {
+  @apply border-blue-900 text-blue-900 bg-transparent;
+}
+
+.card {
+  @apply bg-white flex flex-col shadow-lg rounded-lg overflow-hidden;
+}
+
+.card-body {
+  @apply p-4 lg:p-8;
+}
+
+.card-header {
+  @apply px-4 lg:px-8 bg-slate-100 min-h-20 flex items-center border-b;
+}
+
+.card-actions {
+  @apply px-4 lg:px-8 bg-slate-100 min-h-20 flex items-center border-t;
+}
+
+.card-title {
+  @apply font-bold text-lg text-slate-900;
+}
+
+.card-spacer {
+  @apply flex-1;
 }

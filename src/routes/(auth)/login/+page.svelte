@@ -3,6 +3,8 @@
   import { isEmpty, isValidEmail } from "$lib/string";
   import type { UserLoginField } from "$lib/types";
 
+  import auth from "$lib/auth";
+
   let fields: UserLoginField = { email: "", password: "" };
   let loading = false;
 
@@ -19,21 +21,10 @@
 
     loading = true;
 
-    fetch("/login", {
-      method: "POST",
-      body: JSON.stringify(fields),
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-    })
-      .then(() => {
-        alert("successfully logged in");
-        goto("/");
-      })
-      .catch((error) => {
-        console.error(error);
-      })
+    auth
+      .login(fields)
+      .then(() => goto("/"))
+      .catch((error) => alert("invalid credentials"))
       .finally(() => (loading = false));
   };
 </script>

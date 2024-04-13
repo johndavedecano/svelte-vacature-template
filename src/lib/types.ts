@@ -2,7 +2,9 @@ export type Vacature = {
   title: string;
   type: string;
   location: string;
+  description: string;
   href: string;
+  company: string;
 };
 
 export type User = {
