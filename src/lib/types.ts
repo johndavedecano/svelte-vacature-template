@@ -1,4 +1,5 @@
 export type Vacature = {
+  id?: string | undefined;
   title: string;
   type: string;
   location: string;

@@ -1,7 +1,6 @@
 import { json } from "@sveltejs/kit";
 import type { RequestHandler } from "./$types";
 import { db } from "$lib/server/firebase.js";
-import Joi from "joi";
 
 export const GET: RequestHandler = async ({ request, cookies }) => {
   try {
