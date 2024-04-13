@@ -34,6 +34,14 @@ select {
   @apply border-blue-900 text-blue-900 bg-transparent;
 }
 
+.btn-danger {
+  @apply border-red-600 bg-red-600 text-white;
+}
+
+.btn-danger-outline {
+  @apply border-red-600 text-red-600 bg-transparent;
+}
+
 .card {
   @apply bg-white flex flex-col shadow-lg rounded-lg overflow-hidden;
 }
@@ -56,4 +64,17 @@ select {
 
 .card-spacer {
   @apply flex-1;
+}
+
+.table {
+  @apply border-collapse w-full;
+}
+
+.table thead th {
+  @apply bg-slate-100;
+}
+
+.table th,
+.table td {
+  @apply border border-slate-200 p-4;
 }

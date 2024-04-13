@@ -1,77 +1,61 @@
 <script lang="ts">
   import axios from "axios";
-  import { goto } from "$app/navigation";
   import type { Vacature } from "$lib/types";
+  import { onMount } from "svelte";
+  import MdEdit from "svelte-icons/md/MdEdit.svelte";
+  import MdDelete from "svelte-icons/md/MdDelete.svelte";
+  import Icon from "$lib/components/icon.svelte";
 
   let loading = false;
-  let field: Vacature = {
-    title: "",
-    type: "",
-    location: "",
-    description: "",
-    href: "",
-    company: "",
-  };
+  let items: Vacature[] = [];
 
-  const onSubmit = () => {
+  const onLoad = () => {
     loading = true;
     axios
-      .post("/vacatures", field)
-      .then(() => {
-        alert("successfully created");
-        goto("/vacatures");
-      })
-      .catch((error) => {
-        alert(error.message);
-      })
+      .get("/vacatures/index")
+      .then((response) => response.data)
+      .then((response) => (items = response.data))
+      .catch((error) => {})
       .finally(() => (loading = false));
   };
+
+  onMount(() => onLoad());
 </script>
 
 <div class="card">
   <div class="card-header">
-    <div class="card-title">Nieuwe Vacature</div>
+    <div class="card-title">Vacatures</div>
   </div>
-  <form action="" method="POST" on:submit|preventDefault={onSubmit}>
-    <div class="card-body">
-      <div class="form-group">
-        <label for="title">Title</label>
-        <input type="text" name="title" bind:value={field.title} />
-      </div>
+  <div class="card-body">
+    <table class="table table-zebra">
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Location</th>
+          <th>Company</th>
+          <th>Type</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        {#each items as item}
+          <tr>
+            <td>{item.title}</td>
+            <td>{item.location}</td>
+            <td>{item.company}</td>
+            <td>{item.type}</td>
+            <td>
+              <button class="btn btn-primary">
+                <Icon icon={MdEdit} />
+              </button>
 
-      <div class="form-group">
-        <label for="type">Type</label>
-        <select name="type" bind:value={field.type}>
-          <option value="on-site">ON-SITE</option>
-          <option value="hybrid">HYBRID</option>
-          <option value="remote">REMOTE</option>
-        </select>
-      </div>
-
-      <div class="form-group">
-        <label for="location">Location</label>
-        <input type="text" name="location" bind:value={field.location} />
-      </div>
-
-      <div class="form-group">
-        <label for="company">Company</label>
-        <input type="text" name="company" bind:value={field.company} />
-      </div>
-
-      <div class="form-group">
-        <label for="description">Description</label>
-        <textarea name="description" rows="10" bind:value={field.description} />
-      </div>
-
-      <div class="form-group">
-        <label for="href">Link</label>
-        <input type="url" name="href" bind:value={field.href} />
-      </div>
-    </div>
-    <div class="card-actions">
-      <div class="card-spacer"></div>
-      <button class="btn btn-primary mr-4" disabled={loading}>Submit</button>
-      <button class="btn btn-primary-outline">Cancel</button>
-    </div>
-  </form>
+              <button class="btn btn-danger">
+                <Icon icon={MdDelete} />
+              </button>
+            </td>
+          </tr>
+        {/each}
+      </tbody>
+    </table>
+  </div>
 </div>
