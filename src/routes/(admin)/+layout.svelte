@@ -1,3 +1,17 @@
+<script>
+  import { goto } from "$app/navigation";
+  import axios from "axios";
+
+  const onLogout = () => {
+    axios
+      .delete("/login")
+      .then(() => {
+        goto("/login");
+      })
+      .catch((error) => alert(error.message));
+  };
+</script>
+
 <div class="admin">
   <aside class="sidebar">
     <div class="sidebar-top">
@@ -7,7 +21,7 @@
       <li><a href="/admin">Dashboard</a></li>
       <li><a href="/vacatures">Vacatures</a></li>
       <li><a href="/settings">Settings</a></li>
-      <li><a href="/logout">Logout</a></li>
+      <li><a href="/logout" on:click|preventDefault={onLogout}>Logout</a></li>
     </ul>
   </aside>
   <div class="content">

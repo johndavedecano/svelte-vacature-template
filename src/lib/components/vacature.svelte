@@ -1,41 +1,73 @@
 <script lang="ts">
   import MdAccountBalance from "svelte-icons/md/MdAccountBalance.svelte";
   import MdPersonPinCircle from "svelte-icons/md/MdPersonPinCircle.svelte";
+  import MdKeyboardArrowDown from "svelte-icons/md/MdKeyboardArrowDown.svelte";
+  import MdKeyboardArrowUp from "svelte-icons/md/MdKeyboardArrowUp.svelte";
+  import MdAccountCircle from "svelte-icons/md/MdAccountCircle.svelte";
+
   import type { Vacature } from "$lib/types";
+  import Icon from "./icon.svelte";
+
+  let expanded = false;
 
   export let vacature: Vacature = {
+    id: "",
     title: "",
     type: "",
     location: "",
     href: "",
+    description: "",
+    company: "",
   };
+
+  const onExpand = () => {};
 </script>
 
 <div class="vacature-item" id="vacatures">
-  <div class="vacature-content">
-    <div class="vacature-title">
-      <a href={vacature.href}>
-        {vacature.title}
-      </a>
+  <div class="vacature-overview">
+    <a
+      href="/"
+      class="expand"
+      on:click|preventDefault={() => (expanded = !expanded)}
+    >
+      <Icon icon={expanded ? MdKeyboardArrowUp : MdKeyboardArrowDown} />
+    </a>
+    <div class="vacature-content">
+      <div class="vacature-title">
+        <a href={vacature.href}>
+          {vacature.title}
+        </a>
+      </div>
+      <div class="vacature-icons">
+        <div class="vacature-type">
+          <div class="vacature-icon">
+            <MdAccountBalance />
+          </div>
+          {vacature.type}
+        </div>
+        <div class="vacature-type">
+          <div class="vacature-icon">
+            <MdPersonPinCircle />
+          </div>
+          {vacature.location}
+        </div>
+        <div class="vacature-type">
+          <div class="vacature-icon">
+            <MdAccountCircle />
+          </div>
+          {vacature.company}
+        </div>
+      </div>
     </div>
-    <div class="vacature-icons">
-      <div class="vacature-type">
-        <div class="vacature-icon">
-          <MdAccountBalance />
-        </div>
-        {vacature.type}
-      </div>
-      <div class="vacature-type">
-        <div class="vacature-icon">
-          <MdPersonPinCircle />
-        </div>
-        {vacature.location}
-      </div>
+    <div class="vacature-action">
+      <a href={vacature.href}>Solliciteren</a>
     </div>
   </div>
-  <div class="vacature-action">
-    <a href={vacature.href}>Solliciteren</a>
-  </div>
+  {#if expanded}
+    <div class="vacature-description">
+      {vacature.description}
+    </div>
+  {/if}
 </div>
 
 <style>
@@ -43,8 +75,20 @@
     @apply text-2xl lg:text-4xl font-bold text-black mb-4 lg:mb-8;
   }
 
+  .vacature-description {
+    @apply py-8;
+  }
+
+  .expanded {
+    @apply block pr-4;
+  }
+
+  .vacature-overview {
+    @apply flex w-full;
+  }
+
   .vacature-item {
-    @apply flex flex-col lg:flex-row border border-slate-200 p-4 lg:p-8 lg:items-center mb-8 rounded-lg;
+    @apply flex flex-col border border-slate-200 p-2 lg:p-4 lg:items-center mb-8 rounded-lg;
   }
 
   .vacature-content {

@@ -45,8 +45,10 @@
       bind:value={fields.password}
     />
   </div>
-  <button class="btn btn-primary login-btn"> Submit </button>
-  <a href="/forgot" class="login-link">Have you forgotten your password?</a>
+  <div>
+    <button class="btn btn-primary login-btn w-full"> Submit </button>
+    <!-- <a href="/forgot" class="login-link">Have you forgotten your password?</a> -->
+  </div>
 </form>
 
 <style>
