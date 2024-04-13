@@ -19,8 +19,6 @@
     description: "",
     company: "",
   };
-
-  const onExpand = () => {};
 </script>
 
 <div class="vacature-item" id="vacatures">
@@ -34,7 +32,10 @@
     </a>
     <div class="vacature-content">
       <div class="vacature-title">
-        <a href={vacature.href}>
+        <a
+          href={vacature.href}
+          on:click|preventDefault={() => (expanded = !expanded)}
+        >
           {vacature.title}
         </a>
       </div>
@@ -92,11 +93,11 @@
   }
 
   .vacature-content {
-    @apply flex-1 flex flex-col pr-0 lg:pr-4 mb-4 lg:mb-0;
+    @apply flex-1 flex flex-col pr-4 lg:pr-8 mb-4 lg:mb-0;
   }
 
   .vacature-actions {
-    @apply flex flex-col lg:flex-row;
+    @apply flex flex-col lg:flex-row pt-4;
   }
 
   .vacature-icons {
