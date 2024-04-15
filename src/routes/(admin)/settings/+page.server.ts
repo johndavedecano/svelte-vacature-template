@@ -1,6 +1,6 @@
 import { db } from "$lib/server/firebase.js";
-import type { Vacature } from "$lib/types.js";
 import { error } from "@sveltejs/kit";
+import xss from "xss";
 
 export const load = async ({ params }) => {
   const ref = await db.collection("settings").doc("website").get();
@@ -10,6 +10,8 @@ export const load = async ({ params }) => {
   }
 
   const value: any = ref.data();
+
+  const links = xss(value.footer_links);
 
   return {
     settings: {
@@ -23,7 +25,7 @@ export const load = async ({ params }) => {
       headline3: value.headline3,
       description3: value.description3,
       image3: value.image3,
-      footer_links: value.footer_links,
+      footer_links: links,
     },
   };
 };
