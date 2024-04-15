@@ -2,6 +2,11 @@
 
 Gratis landingspagina met vacatures voor uw wervingsbureau. 100% helemaal gratis. Gebouwd met SvelteKit.
 
+![My Image](https://raw.github.com/johndavedecano/svelte-vacature-template/main/screenshot1.png)
+![My Image](https://raw.github.com/johndavedecano/svelte-vacature-template/main/screenshot2.png)
+![My Image](https://raw.github.com/johndavedecano/svelte-vacature-template/main/screenshot3.png)
+![My Image](https://raw.github.com/johndavedecano/svelte-vacature-template/main/screenshot4.png)
+
 Demo: https://svelte-vacature-template.vercel.app/
 
 ## Creating a project
