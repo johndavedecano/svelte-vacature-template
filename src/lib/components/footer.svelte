@@ -1,17 +1,13 @@
-<script>
+<script lang="ts">
   import Container from "./container.svelte";
+
+  export let settings: any = {};
 </script>
 
 <footer>
   <Container>
     <div class="footer-content">
-      <ul>
-        <li><a href="/">Home</a></li>
-        <li><a href="/">Terms</a></li>
-        <li><a href="/">Privacy</a></li>
-        <li><a href="/">About</a></li>
-        <li><a href="/">Contact Us</a></li>
-      </ul>
+      {@html settings.footer_links}
     </div>
   </Container>
 </footer>
@@ -23,9 +19,5 @@
 
   .footer-content {
     @apply p-4;
-  }
-
-  footer ul {
-    @apply flex items-center gap-4 justify-center;
   }
 </style>

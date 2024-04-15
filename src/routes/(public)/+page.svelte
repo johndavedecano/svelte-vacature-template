@@ -10,15 +10,29 @@
   import Footer from "$lib/components/footer.svelte";
   import Vacature from "$lib/components/vacature.svelte";
 
-  export let data = { vacatures: [] };
+  export let data = { vacatures: [], settings: {} };
 
   let vacatures: Vacature[] = [];
+
+  let settings: any = {
+    name: data.settings.name,
+    headline1: data.settings.headline1,
+    description1: data.settings.description1,
+    image1: data.settings.image1,
+    headline2: data.settings.headline2,
+    description2: data.settings.description2,
+    image2: data.settings.image2,
+    headline3: data.settings.headline3,
+    description3: data.settings.description3,
+    image3: data.settings.image3,
+    footer_links: data.settings.footer_links,
+  };
 </script>
 
 <Wrapper>
-  <Header />
+  <Header {settings} />
   <Container>
-    <Statement />
+    <Statement {settings} />
   </Container>
   <Container>
     <Perks />
@@ -31,7 +45,7 @@
     </Vacatures>
   </Container>
   <Container>
-    <Contact />
+    <Contact {settings} />
   </Container>
-  <Footer />
+  <Footer {settings} />
 </Wrapper>

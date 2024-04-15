@@ -1,8 +1,15 @@
+<script lang="ts">
+  export let settings: any = {};
+</script>
+
 <header class="header">
-  <div class="header-bg" style="background-image: url('/bg.jpg');"></div>
+  <div
+    class="header-bg"
+    style={`background-image: url('${settings.image1}');`}
+  ></div>
   <div class="header-content">
     <div class="header-nav">
-      <a href="/" class="header-brand"> IT Recruiter </a>
+      <a href="/" class="header-brand"> {settings.name} </a>
       <div class="header-spacer"></div>
       <ul class="header-menu">
         <li>
@@ -18,13 +25,9 @@
     </div>
     <div class="header-body">
       <div>
-        <div class="header-title">Word lid van ons team!</div>
+        <div class="header-title">{settings.headline1}</div>
         <div class="header-desc">
-          Ben je geïnteresseerd in een carrière in de steeds veranderende wereld
-          van IT? We nodigen je uit om deel uit te maken van ons bruisende team.
-          Als dynamisch en vooruitstrevend bedrijf zijn de mogelijkheden
-          eindeloos. Ben je klaar om samen met ons deze spannende reis aan te
-          gaan?
+          {settings.description1}
         </div>
       </div>
     </div>

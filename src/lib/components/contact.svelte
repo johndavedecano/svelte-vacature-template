@@ -1,13 +1,15 @@
+<script lang="ts">
+  export let settings: any = {};
+</script>
+
 <div class="contact-wrapper" id="contact">
   <div class="contact">
-    <div class="contact-heading">Neem contact met ons op</div>
+    <div class="contact-heading">{settings.headline3}</div>
     <div class="contact-body">
-      Maria staat altijd voor je klaar.<br /> Je kunt haar bellen of sms'en op
-      06-0000000.<br /> Stuur je liever een e-mail? Dat kan ook via<br />
-      youremail@yourcompany.com
+      {settings.description3}
     </div>
   </div>
-  <img src="/contact.jpg" alt="" />
+  <img src={settings.image3} alt={settings.headline3} />
 </div>
 
 <style>

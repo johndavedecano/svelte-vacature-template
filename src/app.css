@@ -78,3 +78,7 @@ select {
 .table td {
   @apply border border-slate-200 p-4;
 }
+
+.footer-content ul {
+  @apply flex justify-center gap-4;
+}

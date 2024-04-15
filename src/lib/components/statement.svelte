@@ -1,16 +1,15 @@
+<script lang="ts">
+  export let settings: any = {};
+</script>
+
 <div class="statement-wrapper">
   <div class="statement">
-    <div class="statement-heading">Wie we zijn?</div>
+    <div class="statement-heading">{settings.headline2}</div>
     <div class="statement-body">
-      De kern van onze bedrijfscultuur is klanttevredenheid. We werken nauw
-      samen met elke klant om hun unieke uitdagingen en doelen te begrijpen,
-      zodat we onze oplossingen kunnen afstemmen op hun specifieke behoeften. Of
-      we nu softwareapplicaties op maat ontwikkelen of een robuuste
-      IT-infrastructuur implementeren, we streven ernaar resultaten te leveren
-      die verwachtingen overtreffen en succes op lange termijn stimuleren.
+      {settings.description2}
     </div>
   </div>
-  <img src="/cover.jpg" alt="" />
+  <img src={settings.image2} alt={settings.headline2} />
 </div>
 
 <style>
