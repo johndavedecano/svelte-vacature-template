@@ -1,5 +1,10 @@
 <script lang="ts">
+  import Icon from "./icon.svelte";
+  import MdMenu from "svelte-icons/md/MdMenu.svelte";
+
   export let settings: any = {};
+
+  let menu = false;
 </script>
 
 <header class="header">
@@ -11,6 +16,9 @@
     <div class="header-nav">
       <a href="/" class="header-brand"> {settings.name} </a>
       <div class="header-spacer"></div>
+      <a href="/" class="header-toggle" on:click={() => (menu = !menu)}>
+        <Icon icon={MdMenu} />
+      </a>
       <ul class="header-menu">
         <li>
           <a href="/#vacatures">Vacatures</a>
@@ -34,6 +42,22 @@
   </div>
 </header>
 
+{#if menu}
+  <!-- svelte-ignore a11y-click-events-have-key-events -->
+  <!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
+  <ul class="header-menu-mobile" on:click={() => (menu = false)}>
+    <li>
+      <a href="/#vacatures">Vacatures</a>
+    </li>
+    <li>
+      <a href="/#contact">Contact</a>
+    </li>
+    <li>
+      <a href="/admin">Login</a>
+    </li>
+  </ul>
+{/if}
+
 <style>
   .header {
     @apply flex w-full bg-blue-950 relative;
@@ -52,6 +76,21 @@
     }
   }
 
+  .header-toggle {
+    @apply flex lg:hidden items-center justify-center text-white;
+    width: 30px;
+    height: 30px;
+  }
+
+  .header-menu-mobile {
+    @apply w-full rounded-lg bg-blue-950 flex lg:hidden flex-col absolute right-0 left-0 z-20;
+    top: 82px;
+  }
+
+  .header-menu-mobile a {
+    @apply flex px-4 py-2 text-white;
+  }
+
   .header-content {
     @apply mx-auto px-4 lg:px-0 z-20 max-w-full flex flex-col;
     width: 1200px;
@@ -62,11 +101,11 @@
   }
 
   .header-body {
-    @apply w-full flex flex-1 items-center px-8 lg:w-1/2;
+    @apply w-full flex flex-1 items-center px-0 lg:px-8 lg:w-1/2;
   }
 
   .header-title {
-    @apply text-4xl lg:text-6xl font-bold text-white mb-4;
+    @apply text-3xl lg:text-6xl font-bold text-white mb-4 whitespace-nowrap text-ellipsis overflow-hidden;
   }
 
   .header-desc {
@@ -87,7 +126,7 @@
   }
 
   .header-menu {
-    @apply flex items-center gap-4;
+    @apply items-center gap-4 hidden lg:flex;
   }
 
   .header-menu a {

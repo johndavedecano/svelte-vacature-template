@@ -77,7 +77,11 @@
   }
 
   .vacature-description {
-    @apply py-8;
+    @apply py-8 px-4 text-sm lg:text-base;
+  }
+
+  .expand {
+    @apply absolute lg:relative top-2 right-2;
   }
 
   .expanded {
@@ -85,11 +89,11 @@
   }
 
   .vacature-overview {
-    @apply flex w-full;
+    @apply flex flex-col lg:flex-row w-full;
   }
 
   .vacature-item {
-    @apply flex flex-col border border-slate-200 p-2 lg:p-4 lg:items-center mb-8 rounded-lg;
+    @apply flex flex-col border border-slate-200 p-4 lg:p-6 lg:items-center mb-8 rounded-lg relative;
   }
 
   .vacature-content {
@@ -101,7 +105,7 @@
   }
 
   .vacature-icons {
-    @apply flex items-center gap-4;
+    @apply flex flex-col lg:flex-row items-start lg:items-center gap-4;
   }
 
   .vacature-icon {
@@ -110,7 +114,7 @@
   }
 
   .vacature-title {
-    @apply font-bold text-black text-lg;
+    @apply font-bold text-black text-lg mb-4 lg:mb-0;
   }
 
   .vacature-type {
@@ -118,6 +122,6 @@
   }
 
   .vacature-action a {
-    @apply bg-blue-950 inline-flex p-2 text-white rounded-md min-w-28 text-center items-center justify-center;
+    @apply bg-blue-950 inline-flex p-2 w-full text-white rounded-md min-w-28 text-center items-center justify-center;
   }
 </style>
