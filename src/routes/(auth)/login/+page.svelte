@@ -5,7 +5,7 @@
 
   import auth from "$lib/auth";
 
-  let fields: UserLoginField = { email: "", password: "" };
+  let fields: UserLoginField = { email: "demo@demo.com", password: "123456" };
   let loading = false;
 
   const onSubmit = () => {
